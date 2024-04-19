@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 589078c14486df928bbe52c09f2c5b0b
+  - enabled: 1
+    path: Assets/Scenes/Test Pavimento Teletrasportabile.unity
+    guid: dd3cdeba7288f8091b17de3ce6271a0b
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 09c61c37e5af9d19c9deeff2b293b3a2, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: b41f0b524a3113c4c8d1e8a689f80526, type: 2}
