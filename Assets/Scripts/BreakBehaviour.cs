@@ -6,12 +6,9 @@ public class BreakBehaviour : MonoBehaviour
 {
     public float minimumVelocity = 5;
     public AudioSource audioSource;
-    Renderer rend;
     public GameObject key;
 
     public void Start(){ 
-        rend = GetComponent<Renderer>();
-        rend.enabled = true;
     }
 
     void OnCollisionEnter(Collision collision) {
@@ -22,10 +19,9 @@ public class BreakBehaviour : MonoBehaviour
     }
 
     void breakObject() {
-        audioSource.Play();
+        AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
         key.transform.position = transform.position;
 
-        rend.enabled = false;
-        Destroy(gameObject, audioSource.clip.length);
+        Destroy(gameObject);
     }
 }
