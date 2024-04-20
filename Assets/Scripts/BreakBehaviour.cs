@@ -6,9 +6,9 @@ public class BreakBehaviour : MonoBehaviour
 {
     public float minimumVelocity = 5;
     public AudioSource audioSource;
-    public GameObject key;
+    public GameObject objectToSpawn;
 
-    public void Start(){ 
+    public void Start() {
     }
 
     void OnCollisionEnter(Collision collision) {
@@ -20,7 +20,9 @@ public class BreakBehaviour : MonoBehaviour
 
     void breakObject() {
         AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
-        key.transform.position = transform.position;
+        if (objectToSpawn != null) {
+            Instantiate(objectToSpawn, transform.position, transform.rotation);
+        }
 
         Destroy(gameObject);
     }
