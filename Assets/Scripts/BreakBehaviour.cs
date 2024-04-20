@@ -8,17 +8,19 @@ public class BreakBehaviour : MonoBehaviour
     public AudioSource audioSource;
     public GameObject objectToSpawn;
 
+    bool broken = false;
+
     public void Start() {
     }
 
-    void OnCollisionEnter(Collision collision) {
-        Debug.Log(collision.relativeVelocity.magnitude);
-        if (collision.relativeVelocity.magnitude >= minimumVelocity) {
-            breakObject();
+    public void OnCollisionEnter(Collision collision) {
+        if (!broken && collision.relativeVelocity.magnitude >= minimumVelocity) {
+            BreakObject();
         }
     }
 
-    void breakObject() {
+    public void BreakObject() {
+        broken = true;
         AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
         if (objectToSpawn != null) {
             Instantiate(objectToSpawn, transform.position, transform.rotation);
