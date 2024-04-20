@@ -6,7 +6,8 @@ public class BreakBehaviour : MonoBehaviour
 {
     public float minimumVelocity = 5;
     public AudioSource audioSource;
-    public Renderer rend;
+    Renderer rend;
+    public GameObject key;
 
     public void Start(){ 
         rend = GetComponent<Renderer>();
@@ -22,8 +23,9 @@ public class BreakBehaviour : MonoBehaviour
 
     void breakObject() {
         audioSource.Play();
+        key.transform.position = transform.position;
+
         rend.enabled = false;
         Destroy(gameObject, audioSource.clip.length);
-        
     }
 }
