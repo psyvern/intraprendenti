@@ -7,10 +7,12 @@ public class BreakBehaviour : MonoBehaviour
     public float minimumVelocity = 5;
     public AudioSource audioSource;
     public GameObject objectToSpawn;
+    public GameObject parentForObject;
 
     bool broken = false;
 
     public void Start() {
+        broken = false;
     }
 
     public void OnCollisionEnter(Collision collision) {
@@ -23,7 +25,10 @@ public class BreakBehaviour : MonoBehaviour
         broken = true;
         AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
         if (objectToSpawn != null) {
-            Instantiate(objectToSpawn, transform.position, transform.rotation);
+            var spawned = Instantiate(objectToSpawn, transform.position, transform.rotation);
+            if (parentForObject != null) {
+                spawned.transform.parent = parentForObject.transform;
+            }
         }
 
         Destroy(gameObject);

@@ -13,6 +13,7 @@ public class ColorOutlinePropertyAffordanceReceiver : ColorAffordanceReceiver
 
     protected override void OnAffordanceValueUpdated(Color newValue) {
         outline.OutlineColor = newValue;
+        outline.enabled = newValue.a != 0;
 
         base.OnAffordanceValueUpdated(newValue);
     }

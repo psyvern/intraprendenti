@@ -6809,6 +6809,7 @@ MonoBehaviour:
   minimumVelocity: 10
   audioSource: {fileID: 1146212949}
   objectToSpawn: {fileID: 4657960295668179140, guid: 55c5a13d29798f329b92cb6417381641, type: 3}
+  parentForObject: {fileID: 0}
 --- !u!82 &1146212949
 AudioSource:
   m_ObjectHideFlags: 0
