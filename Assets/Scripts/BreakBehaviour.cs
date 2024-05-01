@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BreakBehaviour : MonoBehaviour
 {
     public float minimumVelocity = 5;
     public AudioSource audioSource;
-    public GameObject objectToSpawn;
-    public GameObject parentForObject;
+    public UnityEvent action;
 
     bool broken = false;
 
@@ -24,12 +24,7 @@ public class BreakBehaviour : MonoBehaviour
     public void BreakObject() {
         broken = true;
         AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
-        if (objectToSpawn != null) {
-            var spawned = Instantiate(objectToSpawn, transform.position, transform.rotation);
-            if (parentForObject != null) {
-                spawned.transform.parent = parentForObject.transform;
-            }
-        }
+        action.Invoke();
 
         Destroy(gameObject);
     }
