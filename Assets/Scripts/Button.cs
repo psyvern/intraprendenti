@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEditor;
 public class Button : MonoBehaviour
 {
     public void LoadNewScene()
@@ -15,6 +15,8 @@ public class Button : MonoBehaviour
     {
         // Esci dal gioco
         Application.Quit();
+        // Se ancora è in fase di testing:
+        EditorApplication.isPlaying = false;
     }
     
 }
